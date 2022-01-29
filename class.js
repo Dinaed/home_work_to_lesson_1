@@ -37,6 +37,9 @@ var Car = /** @class */ (function () {
     Car.prototype.setSerialNumber = function (num) {
         this.serialNumber = num;
     };
+    Car.prototype.getSerialNumber = function () {
+        return this.serialNumber;
+    };
     return Car;
 }());
 var NewCar = /** @class */ (function (_super) {
@@ -63,6 +66,26 @@ var NewCar = /** @class */ (function (_super) {
     };
     return NewCar;
 }(Car));
+var CarMileage = /** @class */ (function (_super) {
+    __extends(CarMileage, _super);
+    function CarMileage(carFuel, carSpeed, carDistance) {
+        var _this = _super.call(this) || this;
+        _this.fuel = carFuel;
+        _this.speed = carSpeed;
+        _this.distance = carDistance;
+        return _this;
+    }
+    CarMileage.prototype.setCarConsumption = function (distance, fuel) {
+        this.consumption = (fuel / distance) * 100;
+    };
+    CarMileage.prototype.getCarConsumption = function () {
+        return this.consumption;
+    };
+    return CarMileage;
+}(Car));
+var testCar = new CarMileage(20, 65, 270);
+testCar.setCarConsumption(testCar.distance, testCar.fuel);
+console.log("Car consumption is - ".concat(testCar.getCarConsumption().toFixed(2)));
 var AnotherCar = /** @class */ (function (_super) {
     __extends(AnotherCar, _super);
     function AnotherCar(model) {
@@ -82,6 +105,7 @@ nissan.setColor('red');
 nissan.setWeight(1500);
 nissan.setSerialNumber(22300005556777);
 nissan.printCar();
+console.log(nissan.getSerialNumber());
 var kia = new AnotherCar('Kia');
 kia.getCarModel();
 var audi = new Drive.Cars('Audi');

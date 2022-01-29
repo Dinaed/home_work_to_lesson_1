@@ -14,6 +14,9 @@ class Car {
   setSerialNumber(num:number){
     this.serialNumber = num;
   }
+  getSerialNumber(){
+    return this.serialNumber;
+  }
 }
 
 class NewCar extends Car implements ICars {
@@ -47,6 +50,33 @@ car color - ${this.color},`
   }
 }
 
+class CarMileage extends Car{
+  fuel: number;
+  speed: number;
+  consumption: number
+  distance: number;
+
+  setCarConsumption(distance:number, fuel:number) {
+    this.consumption = (fuel/distance)*100;
+  }
+
+  getCarConsumption() {
+    return this.consumption;
+  }
+
+  constructor(carFuel: number, carSpeed: number, carDistance: number){
+    super();
+    this.fuel = carFuel;
+    this.speed = carSpeed;
+    this.distance = carDistance;
+  }
+}
+
+const testCar: CarMileage = new CarMileage(20, 65, 270);
+testCar.setCarConsumption(testCar.distance, testCar.fuel);
+console.log(`Car consumption is - ${testCar.getCarConsumption().toFixed(2)}`);
+
+
 class AnotherCar extends Car {
   carModel:string
   constructor(model:string){
@@ -67,6 +97,7 @@ nissan.setColor('red');
 nissan.setWeight(1500);
 nissan.setSerialNumber(22300005556777);
 nissan.printCar();
+console.log(nissan.getSerialNumber());
 
 const kia : AnotherCar = new AnotherCar('Kia');
 kia.getCarModel();
