@@ -1,5 +1,5 @@
 /// <reference path="app.ts" />
-
+// tsc --outFile class.js class.ts app.ts для запуска компилятора
 interface ICars {
   weight: number;
   bodyType: string;

@@ -29,3 +29,5 @@ const myNewCar: CarInShop = {
   model:'S40',
   price: 9500
 }
+console.log(myCar);
+console.log(myNewCar);
