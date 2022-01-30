@@ -70,6 +70,8 @@ var CarMileage = /** @class */ (function (_super) {
     __extends(CarMileage, _super);
     function CarMileage(carFuel, carSpeed, carDistance) {
         var _this = _super.call(this) || this;
+        _this.consumption = 10;
+        _this.distance = 100;
         _this.fuel = carFuel;
         _this.speed = carSpeed;
         _this.distance = carDistance;
@@ -81,11 +83,19 @@ var CarMileage = /** @class */ (function (_super) {
     CarMileage.prototype.getCarConsumption = function () {
         return this.consumption;
     };
+    CarMileage.prototype.setDistance = function (fuel, consumption) {
+        return this.distance = fuel * consumption;
+    };
+    CarMileage.prototype.getDistance = function () {
+        return this.distance;
+    };
     return CarMileage;
 }(Car));
 var testCar = new CarMileage(20, 65, 270);
 testCar.setCarConsumption(testCar.distance, testCar.fuel);
-console.log("Car consumption is - ".concat(testCar.getCarConsumption().toFixed(2)));
+console.log("Car consumption is: ".concat(testCar.getCarConsumption().toFixed(2), " on 100 km"));
+testCar.setDistance(testCar.fuel, testCar.consumption);
+console.log("Max car distance is: ".concat(testCar.getDistance().toFixed(2), " km"));
 var AnotherCar = /** @class */ (function (_super) {
     __extends(AnotherCar, _super);
     function AnotherCar(model) {

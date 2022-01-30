@@ -53,8 +53,8 @@ car color - ${this.color},`
 class CarMileage extends Car{
   fuel: number;
   speed: number;
-  consumption: number
-  distance: number;
+  consumption: number = 10;
+  distance: number = 100;
 
   setCarConsumption(distance:number, fuel:number) {
     this.consumption = (fuel/distance)*100;
@@ -63,7 +63,12 @@ class CarMileage extends Car{
   getCarConsumption() {
     return this.consumption;
   }
-
+  setDistance(fuel:number, consumption: number){
+    return this.distance = fuel * consumption;
+  }
+  getDistance(){
+    return this.distance;
+  }
   constructor(carFuel: number, carSpeed: number, carDistance: number){
     super();
     this.fuel = carFuel;
@@ -74,7 +79,10 @@ class CarMileage extends Car{
 
 const testCar: CarMileage = new CarMileage(20, 65, 270);
 testCar.setCarConsumption(testCar.distance, testCar.fuel);
-console.log(`Car consumption is - ${testCar.getCarConsumption().toFixed(2)}`);
+console.log(`Car consumption is: ${testCar.getCarConsumption().toFixed(2)} on 100 km`);
+testCar.setDistance(testCar.fuel, testCar.consumption);
+console.log(`Max car distance is: ${testCar.getDistance().toFixed(2)} km`);
+
 
 
 class AnotherCar extends Car {
